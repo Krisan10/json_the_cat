@@ -1,6 +1,6 @@
 const request = require('request');
-const args = process.argv;
-const catBreed = args[2];
+
+
 
 const fetchBreedDescription = function(breedName, callback) { // A callback function to handle the results or errors.
   const url = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
@@ -23,4 +23,4 @@ const fetchBreedDescription = function(breedName, callback) { // A callback func
 
 module.exports = {
   fetchBreedDescription
-}
+};
