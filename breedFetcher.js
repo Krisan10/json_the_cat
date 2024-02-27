@@ -2,7 +2,7 @@ const request = require('request');
 const args = process.argv;
 const catBreed = args[2];
 
-const breedFetcher = function(breedName, callback) { // A callback function to handle the results or errors.
+const fetchBreedDescription = function(breedName, callback) { // A callback function to handle the results or errors.
   const url = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
 
   request(url, (error, response, body) => {
@@ -20,14 +20,7 @@ const breedFetcher = function(breedName, callback) { // A callback function to h
   });
 };
 
-if (catBreed) {
-  breedFetcher(catBreed, (error, result) => {
-    if (error) {
-      console.error(error);
-    } else {
-      console.log(result);
-    }
-  });
-} else {
-  console.log("Please select a cat.");
+
+module.exports = {
+  fetchBreedDescription
 }
