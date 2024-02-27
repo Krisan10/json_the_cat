@@ -1,15 +1,13 @@
 const request = require('request');
 
-
-
-const fetchBreedDescription = function(breedName, callback) { // A callback function to handle the results or errors.
+const fetchBreedDescription = function(breedName, callback) {
   const url = `https://api.thecatapi.com/v1/breeds/search?q=${breedName}`;
 
   request(url, (error, response, body) => {
     if (error) {
       callback("Error: " + error, null);
     } else {
-      const data = JSON.parse(body); //The response is parsed as JSON, and if there is an error, the callback is called with an error message.
+      const data = JSON.parse(body);
 
       if (data.length > 0) {
         callback(null, data[0].description);
@@ -19,7 +17,6 @@ const fetchBreedDescription = function(breedName, callback) { // A callback func
     }
   });
 };
-
 
 module.exports = {
   fetchBreedDescription
